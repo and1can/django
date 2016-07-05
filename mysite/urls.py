@@ -16,8 +16,10 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('blog.urls')), # now django will redirect everything that comes into 
     								# http://127.0.0.1:8000/ to blog.urls and look for more instructions there
+  
 ]
