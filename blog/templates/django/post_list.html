@@ -1,17 +1,17 @@
-<html>
-	<head>
-		<title>and1can's blog</title>
-	</head>
-	<body>
-		<div>
-            <h1><a href="">And1can's Blog</a></h1>
-        </div>
-		{% for post in posts %}
-    		<div>
-        		<p>published: {{ post.published_date }}</p>
-        		<h1><a href="">{{ post.title }}</a></h1>
-        		<p>{{ post.text|linebreaksbr }}</p> <!-- linebreaksbr is to convert line-breaks into paragraphs -->
-    		</div>
-		{% endfor %}
-	</body>
-</html>
+{% extends 'django/base.html' %}
+
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                <p>published: {{ post.published_date }}</p>
+            </div>
+            <!--<h1><a href="">{{ post.title }}</a></h1>-->
+              <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+              <!-- above is a link to show blog post that we want to create -->
+                <p>{{ post.text|linebreaksbr }}</p>
+            </div>
+        {% endfor %}      
+{% endblock %}
+
+<!-- linebreaksbr is to convert line-breaks into paragraphs -->
